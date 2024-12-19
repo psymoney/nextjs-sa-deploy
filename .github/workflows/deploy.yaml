@@ -1,0 +1,26 @@
+name: NextJS standalone deploy
+
+on:
+  push:
+    branches: [ "main", "feat/standalone" ]
+    paths-ignore:
+        - "README.md"
+        - ".gitignore"
+        - "test/**"
+        - "tests/**"
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, x64]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - run: npm run start
+
