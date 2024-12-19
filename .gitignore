@@ -1,0 +1,9 @@
+# Next.js
+**/.next
+
+# node
+**/node_modules
+
+# git
+**/.git
+**/.idea
